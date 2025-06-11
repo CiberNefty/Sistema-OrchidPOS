@@ -1,0 +1,28 @@
+PASO 1:  Crear el proyecto con Vite (abrir terminal)
+# npm create vite@latest WEB_REACT_JS -- --template react
+
+PASO 2: 
+# cd "La carpeta que creo actualmente"
+
+PASO 3: 
+
+npm install
+npm install @mui/material @emotion/react @emotion/styled
+npm install react-router-dom @mui/styles
+npm install @mui/icons-material
+npm install swagger-ui-react@4.15.5
+npm install axios
+npm install react-router-dom
+npm install @heroicons/react
+
+paso final:
+# Ingresar a la carpeta siguiente FrontEdn-proyecto
+# npm run dev
+
+
+
+ Reinstalar swagger-ui-react
+npm uninstall swagger-ui-react
+npm install swagger-ui-react
+
+

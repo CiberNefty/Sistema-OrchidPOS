@@ -1,0 +1,739 @@
+/* ============================================
+   PROVEEDOR.CSS - ESTILOS ESPECÍFICOS
+   Sistema de gestión de proveedores con diseño moderno
+============================================ */
+
+/* ============================================
+   PARTÍCULAS FLOTANTES DE FONDO
+============================================ */
+.proveedores-page {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.proveedores-page::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, 
+    rgba(106, 27, 154, 0.03) 0%, 
+    rgba(171, 71, 188, 0.03) 50%, 
+    rgba(255, 64, 129, 0.03) 100%);
+  z-index: -2;
+  pointer-events: none;
+}
+
+.floating-particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  background: linear-gradient(45deg, #6a1b9a, #ab47bc);
+  border-radius: 50%;
+  opacity: 0.4;
+  animation: float-up 15s infinite linear;
+}
+
+.particle:nth-child(1) {
+  width: 8px;
+  height: 8px;
+  left: 10%;
+  animation-delay: 0s;
+  animation-duration: 12s;
+}
+
+.particle:nth-child(2) {
+  width: 12px;
+  height: 12px;
+  left: 20%;
+  animation-delay: 2s;
+  animation-duration: 18s;
+}
+
+.particle:nth-child(3) {
+  width: 6px;
+  height: 6px;
+  left: 30%;
+  animation-delay: 4s;
+  animation-duration: 14s;
+}
+
+.particle:nth-child(4) {
+  width: 10px;
+  height: 10px;
+  left: 40%;
+  animation-delay: 6s;
+  animation-duration: 16s;
+}
+
+.particle:nth-child(5) {
+  width: 14px;
+  height: 14px;
+  left: 50%;
+  animation-delay: 8s;
+  animation-duration: 20s;
+}
+
+.particle:nth-child(6) {
+  width: 7px;
+  height: 7px;
+  left: 60%;
+  animation-delay: 10s;
+  animation-duration: 13s;
+}
+
+.particle:nth-child(7) {
+  width: 9px;
+  height: 9px;
+  left: 70%;
+  animation-delay: 12s;
+  animation-duration: 17s;
+}
+
+.particle:nth-child(8) {
+  width: 11px;
+  height: 11px;
+  left: 80%;
+  animation-delay: 14s;
+  animation-duration: 19s;
+}
+
+.particle:nth-child(9) {
+  width: 5px;
+  height: 5px;
+  left: 90%;
+  animation-delay: 16s;
+  animation-duration: 15s;
+}
+
+.particle:nth-child(10) {
+  width: 13px;
+  height: 13px;
+  left: 95%;
+  animation-delay: 18s;
+  animation-duration: 21s;
+}
+
+@keyframes float-up {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* ============================================
+   BOTÓN AGREGAR PROVEEDOR MEJORADO
+============================================ */
+.proveedor-boton-contenedor {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 30px;
+  padding: 0 10px;
+  position: relative;
+}
+
+.proveedor-boton-agregar {
+  background: linear-gradient(135deg, #66bb6a 0%, #4caf50 100%);
+  color: white;
+  padding: 16px 28px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 
+    0 4px 15px rgba(102, 187, 106, 0.3),
+    0 0 0 0 rgba(102, 187, 106, 0.4);
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.proveedor-boton-agregar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s;
+}
+
+.proveedor-boton-agregar:hover::before {
+  left: 100%;
+}
+
+.proveedor-boton-agregar:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 
+    0 8px 25px rgba(102, 187, 106, 0.4),
+    0 0 0 8px rgba(102, 187, 106, 0.1);
+}
+
+.proveedor-boton-agregar:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+.proveedor-boton-agregar .MuiSvgIcon-root {
+  font-size: 20px;
+  transition: transform 0.3s ease;
+}
+
+.proveedor-boton-agregar:hover .MuiSvgIcon-root {
+  transform: rotate(90deg);
+}
+
+/* ============================================
+   CONTAINER DE TABLA MEJORADO
+============================================ */
+.proveedor-tabla-container {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 
+    0 10px 40px rgba(106, 27, 154, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.2);
+  padding: 30px;
+  margin-bottom: 30px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(106, 27, 154, 0.1);
+}
+
+.proveedor-tabla-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #6a1b9a, #ab47bc, #ff4081, #ab47bc, #6a1b9a);
+  background-size: 400% 100%;
+  animation: gradient-flow 3s ease-in-out infinite;
+}
+
+@keyframes gradient-flow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.proveedor-tabla-titulo {
+  color: #6a1b9a;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+.proveedor-tabla-titulo::before {
+  content: '👥';
+  font-size: 1.3rem;
+  background: linear-gradient(135deg, #6a1b9a, #ab47bc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.proveedor-tabla-titulo::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #6a1b9a, #ab47bc);
+  border-radius: 2px;
+}
+
+/* ============================================
+   TABLA DE PROVEEDORES ESTILIZADA
+============================================ */
+.proveedor-tabla-responsive {
+  overflow-x: auto;
+  border-radius: 15px;
+  box-shadow: 0 0 0 1px rgba(106, 27, 154, 0.1);
+}
+
+.proveedor-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+  border-radius: 15px;
+  overflow: hidden;
+  background: white;
+}
+
+.proveedor-tabla thead {
+  background: linear-gradient(135deg, #6a1b9a 0%, #ab47bc 100%);
+  position: relative;
+}
+
+.proveedor-tabla thead::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #ff4081, #ab47bc, #6a1b9a);
+}
+
+.proveedor-tabla th {
+  padding: 20px 15px;
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  font-size: 0.95rem;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  position: relative;
+}
+
+.proveedor-tabla th:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 25%;
+  height: 50%;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.proveedor-tabla td {
+  padding: 18px 15px;
+  text-align: center;
+  font-size: 0.9rem;
+  border-bottom: 1px solid rgba(106, 27, 154, 0.08);
+  vertical-align: middle;
+  transition: all 0.3s ease;
+}
+
+.proveedor-tabla tbody tr {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.proveedor-tabla tbody tr:nth-child(even) {
+  background: linear-gradient(135deg, 
+    rgba(243, 229, 245, 0.3) 0%, 
+    rgba(248, 239, 250, 0.3) 100%);
+}
+
+.proveedor-tabla tbody tr:hover {
+  background: linear-gradient(135deg, 
+    rgba(106, 27, 154, 0.08) 0%, 
+    rgba(171, 71, 188, 0.08) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(106, 27, 154, 0.15);
+}
+
+.proveedor-tabla tbody tr:hover td {
+  color: #4a148c;
+  font-weight: 500;
+}
+
+/* ============================================
+   BOTONES DE ACCIÓN EN TABLA
+============================================ */
+.proveedor-btn-accion {
+  padding: 10px 12px;
+  margin: 0 4px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  min-width: 40px;
+  height: 40px;
+}
+
+.proveedor-btn-accion::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  transform: translate(-50%, -50%);
+}
+
+.proveedor-btn-accion:hover::before {
+  width: 100%;
+  height: 100%;
+}
+
+.proveedor-btn-editar {
+  background: linear-gradient(135deg, #2196f3, #1976d2);
+  color: white;
+  box-shadow: 0 3px 10px rgba(33, 150, 243, 0.3);
+}
+
+.proveedor-btn-editar:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 20px rgba(33, 150, 243, 0.4);
+}
+
+.proveedor-btn-editar::before {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.proveedor-btn-eliminar {
+  background: linear-gradient(135deg, #f44336, #d32f2f);
+  color: white;
+  box-shadow: 0 3px 10px rgba(244, 67, 54, 0.3);
+}
+
+.proveedor-btn-eliminar:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 20px rgba(244, 67, 54, 0.4);
+}
+
+.proveedor-btn-eliminar::before {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.proveedor-btn-accion .MuiSvgIcon-root {
+  font-size: 18px;
+  transition: transform 0.3s ease;
+  z-index: 1;
+}
+
+.proveedor-btn-editar:hover .MuiSvgIcon-root {
+  transform: rotate(15deg);
+}
+
+.proveedor-btn-eliminar:hover .MuiSvgIcon-root {
+  transform: scale(1.1);
+}
+
+/* ============================================
+   ESTADO DE CARGA MEJORADO
+============================================ */
+.proveedor-loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 20px;
+  color: #6a1b9a;
+  font-size: 1.2rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(106, 27, 154, 0.1);
+}
+
+.proveedor-loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(106, 27, 154, 0.2);
+  border-top: 4px solid #6a1b9a;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  animation: spin-elegant 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes spin-elegant {
+  0% { 
+    transform: rotate(0deg) scale(1); 
+    border-top-color: #6a1b9a; 
+  }
+  25% { 
+    transform: rotate(90deg) scale(1.1); 
+    border-top-color: #ab47bc; 
+  }
+  50% { 
+    transform: rotate(180deg) scale(1); 
+    border-top-color: #ff4081; 
+  }
+  75% { 
+    transform: rotate(270deg) scale(1.1); 
+    border-top-color: #ab47bc; 
+  }
+  100% { 
+    transform: rotate(360deg) scale(1); 
+    border-top-color: #6a1b9a; 
+  }
+}
+
+.proveedor-loading-text {
+  background: linear-gradient(135deg, #6a1b9a, #ab47bc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: pulse-text 2s ease-in-out infinite;
+}
+
+@keyframes pulse-text {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* ============================================
+   ESTADO VACÍO MEJORADO
+============================================ */
+.proveedor-empty-state {
+  padding: 80px 20px;
+  text-align: center;
+  color: #666;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(106, 27, 154, 0.1);
+}
+
+.proveedor-empty-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.proveedor-empty-icon {
+  font-size: 5rem;
+  background: linear-gradient(135deg, #ab47bc, #6a1b9a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  opacity: 0.8;
+  animation: float-icon 3s ease-in-out infinite;
+}
+
+@keyframes float-icon {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.proveedor-empty-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #6a1b9a;
+  margin: 0;
+}
+
+.proveedor-empty-description {
+  font-size: 1rem;
+  color: #888;
+  max-width: 400px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+============================================ */
+@media (max-width: 1024px) {
+  .proveedor-tabla-container {
+    padding: 25px 20px;
+  }
+  
+  .proveedor-tabla th,
+  .proveedor-tabla td {
+    padding: 15px 12px;
+    font-size: 0.85rem;
+  }
+  
+  .proveedor-btn-accion {
+    min-width: 36px;
+    height: 36px;
+    padding: 8px 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .floating-particles {
+    display: none; /* Ocultar partículas en móvil para mejor rendimiento */
+  }
+  
+  .proveedor-boton-contenedor {
+    justify-content: center;
+    margin-bottom: 25px;
+  }
+  
+  .proveedor-boton-agregar {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 24px;
+    font-size: 15px;
+  }
+  
+  .proveedor-tabla-container {
+    padding: 20px 15px;
+    border-radius: 15px;
+  }
+  
+  .proveedor-tabla-titulo {
+    font-size: 1.3rem;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .proveedor-tabla-responsive {
+    border-radius: 12px;
+  }
+  
+  .proveedor-tabla th,
+  .proveedor-tabla td {
+    padding: 12px 8px;
+    font-size: 0.8rem;
+  }
+  
+  .proveedor-btn-accion {
+    min-width: 34px;
+    height: 34px;
+    margin: 0 2px;
+  }
+  
+  .proveedor-btn-accion .MuiSvgIcon-root {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .proveedor-boton-agregar {
+    padding: 12px 20px;
+    font-size: 14px;
+    gap: 8px;
+  }
+  
+  .proveedor-tabla-container {
+    padding: 15px 10px;
+    margin-bottom: 20px;
+  }
+  
+  .proveedor-tabla-titulo {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+  }
+  
+  .proveedor-tabla th,
+  .proveedor-tabla td {
+    padding: 10px 6px;
+    font-size: 0.75rem;
+  }
+  
+  .proveedor-btn-accion {
+    min-width: 32px;
+    height: 32px;
+    margin: 0 1px;
+  }
+  
+  .proveedor-loading {
+    padding: 60px 15px;
+    font-size: 1.1rem;
+  }
+  
+  .proveedor-loading-spinner {
+    width: 40px;
+    height: 40px;
+    border-width: 3px;
+  }
+  
+  .proveedor-empty-state {
+    padding: 60px 15px;
+  }
+  
+  .proveedor-empty-icon {
+    font-size: 4rem;
+  }
+  
+  .proveedor-empty-title {
+    font-size: 1.1rem;
+  }
+  
+  .proveedor-empty-description {
+    font-size: 0.9rem;
+  }
+}
+
+/* ============================================
+   MEJORAS DE ACCESIBILIDAD
+============================================ */
+@media (prefers-reduced-motion: reduce) {
+  .particle,
+  .proveedor-loading-spinner,
+  .float-icon,
+  .pulse-text {
+    animation: none !important;
+  }
+  
+  .proveedor-tabla tbody tr:hover {
+    transform: none;
+  }
+  
+  .proveedor-btn-accion:hover {
+    transform: none;
+  }
+}
+
+.proveedor-btn-accion:focus-visible {
+  outline: 2px solid #ff4081;
+  outline-offset: 2px;
+}
+
+/* ============================================
+   PRINT STYLES
+============================================ */
+@media print {
+  .floating-particles,
+  .proveedor-boton-contenedor {
+    display: none !important;
+  }
+  
+  .proveedor-tabla-container {
+    box-shadow: none !important;
+    border: 1px solid #ddd !important;
+    background: white !important;
+  }
+  
+  .proveedor-tabla thead {
+    background: #6a1b9a !important;
+    color: white !important;
+  }
+  
+  .proveedor-btn-accion {
+    display: none !important;
+  }
+}

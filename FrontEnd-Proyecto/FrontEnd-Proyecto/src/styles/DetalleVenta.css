@@ -1,0 +1,508 @@
+/* ============================================
+   DETALLE DE VENTA - ESTILOS ESPECÍFICOS
+============================================ */
+
+/* Variables específicas para DetalleVenta */
+:root {
+  --detalle-primary: #667eea;
+  --detalle-secondary: #764ba2;
+  --detalle-accent: #f093fb;
+  --detalle-success: #4facfe;
+  --detalle-warning: #f6d365;
+  --detalle-gradient-main: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --detalle-gradient-card: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+  --detalle-gradient-search: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  --detalle-shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.1);
+  --detalle-shadow-hover: 0 20px 60px rgba(102, 126, 234, 0.15);
+  --detalle-border-radius: 20px;
+}
+
+/* Contenedor principal */
+.venta-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  position: relative;
+}
+
+.venta-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23667eea' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Tarjeta de información principal */
+.venta-card {
+  background: var(--detalle-gradient-card);
+  backdrop-filter: blur(20px);
+  border-radius: var(--detalle-border-radius);
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--detalle-shadow-soft);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.venta-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  transform: rotate(45deg);
+  pointer-events: none;
+}
+
+.venta-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--detalle-shadow-hover);
+}
+
+/* Grid de información */
+.venta-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.info-item {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border-left: 4px solid var(--detalle-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.info-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--detalle-gradient-main);
+  transition: width 0.3s ease;
+}
+
+.info-item:hover::before {
+  width: 100%;
+  opacity: 0.1;
+}
+
+.info-item:hover {
+  transform: translateX(5px);
+  box-shadow: 0 8px 30px rgba(102, 126, 234, 0.2);
+}
+
+.info-label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+}
+
+.info-value {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--detalle-primary);
+  position: relative;
+  z-index: 1;
+}
+
+/* Tarjeta de búsqueda */
+.busqueda-card {
+  background: var(--detalle-gradient-search);
+  border-radius: var(--detalle-border-radius);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--detalle-shadow-soft);
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.busqueda-card::after {
+  content: '🔍';
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 3rem;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.busqueda-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #8b5a2b;
+  margin-bottom: 1.5rem;
+}
+
+.busqueda-header i {
+  font-size: 1.5rem;
+  color: #d97706;
+}
+
+.busqueda-form {
+  display: flex;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.busqueda-form input {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 15px;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.busqueda-form input:focus {
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.2), inset 0 2px 10px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.busqueda-form input::placeholder {
+  color: #9ca3af;
+  font-style: italic;
+}
+
+/* Tabla mejorada */
+.tabla-container {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: var(--detalle-border-radius);
+  padding: 2rem;
+  box-shadow: var(--detalle-shadow-soft);
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.tabla-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: var(--detalle-gradient-main);
+}
+
+.tabla-detalle {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+.tabla-detalle thead {
+  background: var(--detalle-gradient-main);
+  color: white;
+}
+
+.tabla-detalle th {
+  padding: 1.5rem 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.9rem;
+  position: relative;
+  text-align: center;
+}
+
+.tabla-detalle th::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.tabla-detalle tbody tr {
+  background: white;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.tabla-detalle tbody tr:nth-child(even) {
+  background: linear-gradient(90deg, rgba(168, 237, 234, 0.1) 0%, rgba(254, 214, 227, 0.1) 100%);
+}
+
+.tabla-detalle tbody tr:hover {
+  background: linear-gradient(90deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  transform: scale(1.02);
+  box-shadow: 0 5px 20px rgba(102, 126, 234, 0.2);
+}
+
+.tabla-detalle td {
+  padding: 1.2rem 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  text-align: center;
+  font-weight: 500;
+  position: relative;
+}
+
+.tabla-detalle td:first-child {
+  border-left: 4px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.tabla-detalle tbody tr:hover td:first-child {
+  border-left-color: var(--detalle-primary);
+}
+
+/* Resumen de venta espectacular */
+.resumen-venta {
+  background: var(--detalle-gradient-main);
+  color: white;
+  padding: 3rem;
+  border-radius: var(--detalle-border-radius);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--detalle-shadow-soft);
+  margin-bottom: 2rem;
+}
+
+.resumen-venta::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.total-venta {
+  position: relative;
+  z-index: 2;
+}
+
+.total-label {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 500;
+  opacity: 0.9;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.total-value {
+  display: block;
+  font-size: 3.5rem;
+  font-weight: 900;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.total-value::after {
+  content: '💰';
+  position: absolute;
+  right: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  opacity: 0.7;
+}
+
+/* Botones mejorados */
+.btn {
+  padding: 1rem 2rem;
+  border-radius: 15px;
+  border: none;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.5s;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.btn-print {
+  background: linear-gradient(135deg, #36d1dc 0%, #5b86e5 100%);
+  color: white;
+}
+
+.btn-print:hover {
+  box-shadow: 0 10px 30px rgba(54, 209, 220, 0.4);
+}
+
+.btn-primary {
+  background: var(--detalle-gradient-main);
+  color: white;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+}
+
+/* Animaciones adicionales */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.venta-card {
+  animation: slideInUp 0.6s ease-out;
+}
+
+.busqueda-card {
+  animation: slideInUp 0.6s ease-out 0.1s both;
+}
+
+.tabla-container {
+  animation: slideInUp 0.6s ease-out 0.2s both;
+}
+
+.resumen-venta {
+  animation: fadeInScale 0.6s ease-out 0.3s both;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .venta-container {
+    padding: 1rem;
+  }
+
+  .venta-card,
+  .busqueda-card,
+  .tabla-container,
+  .resumen-venta {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .venta-info {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .busqueda-form {
+    flex-direction: column;
+  }
+
+  .total-value {
+    font-size: 2.5rem;
+  }
+
+  .total-value::after {
+    right: -40px;
+    font-size: 1.5rem;
+  }
+
+  .tabla-detalle {
+    font-size: 0.9rem;
+  }
+
+  .tabla-detalle th,
+  .tabla-detalle td {
+    padding: 0.8rem 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .venta-container {
+    padding: 0.5rem;
+  }
+
+  .info-item {
+    padding: 1rem;
+  }
+
+  .total-value {
+    font-size: 2rem;
+  }
+
+  .btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}

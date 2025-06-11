@@ -1,0 +1,583 @@
+/* ============================================
+   ELIMINARPROVEEDOR.CSS - ESTILOS ESPECÍFICOS
+   Modal de confirmación con diseño moderno y partículas
+============================================ */
+
+/* ============================================
+   PARTÍCULAS FLOTANTES DE FONDO
+============================================ */
+.eliminar-proveedor-page {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.eliminar-proveedor-page::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, 
+    rgba(244, 67, 54, 0.03) 0%, 
+    rgba(106, 27, 154, 0.03) 50%, 
+    rgba(171, 71, 188, 0.03) 100%);
+  z-index: -2;
+  pointer-events: none;
+}
+
+.eliminar-floating-particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.eliminar-particle {
+  position: absolute;
+  background: linear-gradient(45deg, #f44336, #6a1b9a);
+  border-radius: 50%;
+  opacity: 0.4;
+  animation: eliminar-float-up 15s infinite linear;
+}
+
+.eliminar-particle:nth-child(1) {
+  width: 8px;
+  height: 8px;
+  left: 8%;
+  animation-delay: 0s;
+  animation-duration: 12s;
+}
+
+.eliminar-particle:nth-child(2) {
+  width: 12px;
+  height: 12px;
+  left: 18%;
+  animation-delay: 2s;
+  animation-duration: 18s;
+}
+
+.eliminar-particle:nth-child(3) {
+  width: 6px;
+  height: 6px;
+  left: 28%;
+  animation-delay: 4s;
+  animation-duration: 14s;
+}
+
+.eliminar-particle:nth-child(4) {
+  width: 10px;
+  height: 10px;
+  left: 38%;
+  animation-delay: 6s;
+  animation-duration: 16s;
+}
+
+.eliminar-particle:nth-child(5) {
+  width: 14px;
+  height: 14px;
+  left: 48%;
+  animation-delay: 8s;
+  animation-duration: 20s;
+}
+
+.eliminar-particle:nth-child(6) {
+  width: 7px;
+  height: 7px;
+  left: 58%;
+  animation-delay: 10s;
+  animation-duration: 13s;
+}
+
+.eliminar-particle:nth-child(7) {
+  width: 9px;
+  height: 9px;
+  left: 68%;
+  animation-delay: 12s;
+  animation-duration: 17s;
+}
+
+.eliminar-particle:nth-child(8) {
+  width: 11px;
+  height: 11px;
+  left: 78%;
+  animation-delay: 14s;
+  animation-duration: 19s;
+}
+
+.eliminar-particle:nth-child(9) {
+  width: 5px;
+  height: 5px;
+  left: 88%;
+  animation-delay: 16s;
+  animation-duration: 15s;
+}
+
+.eliminar-particle:nth-child(10) {
+  width: 13px;
+  height: 13px;
+  left: 98%;
+  animation-delay: 18s;
+  animation-duration: 21s;
+}
+
+@keyframes eliminar-float-up {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* ============================================
+   OVERLAY DE FONDO
+============================================ */
+.eliminar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: eliminar-fade-in 0.3s ease-out;
+  padding: 20px;
+}
+
+@keyframes eliminar-fade-in {
+  from { 
+    opacity: 0; 
+    backdrop-filter: blur(0px);
+  }
+  to { 
+    opacity: 1; 
+    backdrop-filter: blur(8px);
+  }
+}
+
+/* ============================================
+   TARJETA PRINCIPAL DE ELIMINACIÓN
+============================================ */
+.eliminar-card {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  border-radius: 25px;
+  padding: 40px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 
+    0 20px 60px rgba(244, 67, 54, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(244, 67, 54, 0.1);
+  animation: eliminar-scale-in 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+}
+
+.eliminar-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #f44336, #6a1b9a, #ab47bc, #6a1b9a, #f44336);
+  background-size: 400% 100%;
+  animation: eliminar-gradient-flow 3s ease-in-out infinite;
+}
+
+.eliminar-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(244, 67, 54, 0.02) 0%,
+    transparent 50%,
+    rgba(106, 27, 154, 0.02) 100%
+  );
+  animation: eliminar-rotate 15s linear infinite;
+  z-index: -1;
+}
+
+@keyframes eliminar-scale-in {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes eliminar-gradient-flow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes eliminar-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================
+   TÍTULO DE ELIMINACIÓN
+============================================ */
+.eliminar-title {
+  color: #f44336;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.eliminar-title::before {
+  content: '🗑️';
+  font-size: 1.5rem;
+  animation: eliminar-shake-icon 2s ease-in-out infinite;
+}
+
+.eliminar-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #f44336, #6a1b9a);
+  border-radius: 2px;
+}
+
+@keyframes eliminar-shake-icon {
+  0%, 100% { transform: rotate(0deg); }
+  10%, 30%, 50%, 70%, 90% { transform: rotate(-5deg); }
+  20%, 40%, 60%, 80% { transform: rotate(5deg); }
+}
+
+/* ============================================
+   TEXTO DE CONFIRMACIÓN
+============================================ */
+.eliminar-text {
+  color: #424242;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  text-align: center;
+  margin-bottom: 35px;
+  background: linear-gradient(135deg, 
+    rgba(244, 67, 54, 0.05) 0%, 
+    rgba(106, 27, 154, 0.05) 100%);
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid rgba(244, 67, 54, 0.1);
+  position: relative;
+}
+
+.eliminar-text::before {
+  content: '⚠️';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  padding: 0 10px;
+  font-size: 1.2rem;
+  animation: eliminar-pulse-warning 2s ease-in-out infinite;
+}
+
+.eliminar-text strong {
+  color: #f44336;
+  font-weight: 700;
+  background: linear-gradient(135deg, #f44336, #6a1b9a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@keyframes eliminar-pulse-warning {
+  0%, 100% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(1.1); }
+}
+
+/* ============================================
+   MENSAJE DE ERROR
+============================================ */
+.eliminar-error {
+  background: linear-gradient(135deg, rgba(244, 67, 54, 0.1), rgba(211, 47, 47, 0.1));
+  color: #d32f2f;
+  padding: 15px 20px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-align: center;
+  border: 1px solid rgba(244, 67, 54, 0.2);
+  box-shadow: 0 4px 15px rgba(244, 67, 54, 0.1);
+  margin-bottom: 25px;
+  position: relative;
+  animation: eliminar-error-shake 0.5s ease-in-out;
+}
+
+.eliminar-error::before {
+  content: '❌';
+  margin-right: 10px;
+  font-size: 1.1rem;
+}
+
+@keyframes eliminar-error-shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+/* ============================================
+   CONTENEDOR DE BOTONES
+============================================ */
+.eliminar-botones {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+/* ============================================
+   BOTONES DE ACCIÓN
+============================================ */
+.eliminar-btn {
+  padding: 16px 32px;
+  border: none;
+  border-radius: 15px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  min-width: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.eliminar-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s;
+}
+
+.eliminar-btn:hover::before {
+  left: 100%;
+}
+
+/* ============================================
+   BOTÓN CONFIRMAR (ELIMINAR)
+============================================ */
+.eliminar-btn.confirmar {
+  background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%);
+  color: white;
+  box-shadow: 
+    0 6px 20px rgba(244, 67, 54, 0.3),
+    0 0 0 0 rgba(244, 67, 54, 0.4);
+}
+
+.eliminar-btn.confirmar::after {
+  content: '🗑️';
+  margin-left: 5px;
+  font-size: 0.9rem;
+  transition: transform 0.3s ease;
+}
+
+.eliminar-btn.confirmar:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 
+    0 10px 30px rgba(244, 67, 54, 0.4),
+    0 0 0 8px rgba(244, 67, 54, 0.1);
+}
+
+.eliminar-btn.confirmar:hover::after {
+  transform: scale(1.2) rotate(10deg);
+}
+
+.eliminar-btn.confirmar:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+/* ============================================
+   BOTÓN CANCELAR
+============================================ */
+.eliminar-btn.cancelar {
+  background: linear-gradient(135deg, #6a1b9a 0%, #4a148c 100%);
+  color: white;
+  box-shadow: 
+    0 6px 20px rgba(106, 27, 154, 0.3),
+    0 0 0 0 rgba(106, 27, 154, 0.4);
+}
+
+.eliminar-btn.cancelar::after {
+  content: '↩️';
+  margin-left: 5px;
+  font-size: 0.9rem;
+  transition: transform 0.3s ease;
+}
+
+.eliminar-btn.cancelar:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 
+    0 10px 30px rgba(106, 27, 154, 0.4),
+    0 0 0 8px rgba(106, 27, 154, 0.1);
+}
+
+.eliminar-btn.cancelar:hover::after {
+  transform: scale(1.2) rotate(-10deg);
+}
+
+.eliminar-btn.cancelar:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+============================================ */
+@media (max-width: 768px) {
+  .eliminar-floating-particles {
+    display: none;
+  }
+  
+  .eliminar-card {
+    padding: 30px 25px;
+    margin: 10px;
+    max-width: calc(100% - 20px);
+  }
+  
+  .eliminar-title {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+  }
+  
+  .eliminar-text {
+    font-size: 1rem;
+    margin-bottom: 25px;
+    padding: 15px;
+  }
+  
+  .eliminar-botones {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .eliminar-btn {
+    padding: 14px 28px;
+    font-size: 0.9rem;
+    min-width: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .eliminar-container {
+    padding: 15px;
+  }
+  
+  .eliminar-card {
+    padding: 25px 20px;
+    border-radius: 20px;
+  }
+  
+  .eliminar-title {
+    font-size: 1.3rem;
+    gap: 10px;
+  }
+  
+  .eliminar-text {
+    font-size: 0.95rem;
+    padding: 12px;
+  }
+  
+  .eliminar-btn {
+    padding: 12px 24px;
+    font-size: 0.85rem;
+    min-width: 100px;
+  }
+}
+
+/* ============================================
+   MEJORAS DE ACCESIBILIDAD
+============================================ */
+@media (prefers-reduced-motion: reduce) {
+  .eliminar-particle,
+  .eliminar-shake-icon,
+  .eliminar-pulse-warning,
+  .eliminar-error-shake {
+    animation: none !important;
+  }
+  
+  .eliminar-btn:hover {
+    transform: none;
+  }
+  
+  .eliminar-card {
+    animation: none;
+  }
+}
+
+.eliminar-btn:focus-visible {
+  outline: 2px solid #ff4081;
+  outline-offset: 3px;
+}
+
+/* ============================================
+   PRINT STYLES
+============================================ */
+@media print {
+  .eliminar-floating-particles,
+  .eliminar-container::before {
+    display: none !important;
+  }
+  
+  .eliminar-container {
+    position: static;
+    background: white !important;
+    backdrop-filter: none !important;
+  }
+  
+  .eliminar-card {
+    box-shadow: none !important;
+    border: 1px solid #ddd !important;
+    background: white !important;
+  }
+}
